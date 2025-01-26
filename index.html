@@ -24,6 +24,9 @@
             margin-bottom: 40px; /* Aggiunge un po' di spazio sotto la parola */
             /* font-weight: bold; /* Rende il testo in grassetto */
         }
+        #controlli {
+            display: flex;
+        }
          button {
             font-size: 1.5em;
             padding: 20px;
@@ -89,8 +92,10 @@
     <h2>Intesa Perfetta</h2>
     <h1 id="parola"></h1>
     <h2 id="timer">60</h2>
+    <div id="controlli">
         <button id="avviaPausa" onclick="avviaPausaTimer()"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
         <button onclick="resetTimer()"><i class="fas fa-undo"></i></button>
+    </div>
     <div id="punteggio-container"> 
             <button onclick="decrementaPunteggio()"><i class="fas fa-minus"></i></button>
             <span id="punteggio">0</span>
