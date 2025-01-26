@@ -24,7 +24,7 @@
             margin-bottom: 50px; /* Aggiunge un po' di spazio sotto la parola */
             font-weight: bold; /* Rende il testo in grassetto */
         }
-        button {
+         button {
             font-size: 2em;
             padding: 15px;
             margin: 10px;
@@ -39,7 +39,7 @@
             justify-content: center;
             align-items: center;
             transition: background-color 0.3s ease;
-            position: relative; /* Necessario per il posizionamento assoluto delle icone */
+            position: relative;
         }
 
         button:hover {
@@ -48,27 +48,27 @@
 
         /* Stili per le icone play e pause */
         #avviaPausa i {
-            position: absolute; /* Posiziona le icone una sopra l'altra */
+            position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Centra perfettamente le icone */
-            transition: opacity 0.3s ease; /* Transizione per la comparsa/scomparsa */
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
         }
 
-        #avviaPausa .fa-play { /* Icona di play */
-            opacity: 1; /* Mostra l'icona di play all'inizio */
+        #avviaPausa .fa-play {
+            opacity: 1;
         }
 
         #avviaPausa.paused .fa-play {
-            opacity: 0; /* Nasconde l'icona di play quando è in pausa */
+            opacity: 0;
         }
 
-        #avviaPausa .fa-pause { /* Icona di pausa */
-            opacity: 0; /* Nasconde l'icona di pausa all'inizio */
+        #avviaPausa .fa-pause {
+            opacity: 0;
         }
 
         #avviaPausa.paused .fa-pause {
-            opacity: 1; /* Mostra l'icona di pausa quando è in pausa */
+            opacity: 1;
         }
         /* ... altri stili ... */
     </style>
@@ -78,8 +78,10 @@
     <h2>Intesa Perfetta</h2>
     <h1 id="parola"></h1>
     <h2 id="timer">60</h2>
-    <button id="avviaPausa" onclick="avviaPausaTimer()"><i class="fas fa-play"></i></button>
-    <button onclick="resetTimer()"><i class="fas fa-undo"></i></button> 
+        <button id="avviaPausa" onclick="avviaPausaTimer()"> <--- Nessun testo qui!
+            <i class="fas fa-play"></i><i class="fas fa-pause"></i>
+        </button>
+        <button onclick="resetTimer()"><i class="fas fa-undo"></i></button>
     <script>
         let paroleItaliane = [];
         let timerInterval;
@@ -111,11 +113,11 @@
             if (timerAttivo) {
                 clearInterval(timerInterval);
                 timerAttivo = false;
-                bottone.textContent = "Riprendi Timer";
+                bottone.classList.add("paused"); // Aggiunge la classe "paused"
             } else {
                 generaParola();
                 timerAttivo = true;
-                bottone.textContent = "Pausa Timer";
+                bottone.classList.remove("paused"); // Rimuove la classe "paused"
                 if (secondi === 60) {
                     secondi = 60
                 }
@@ -125,7 +127,7 @@
                     if (secondi <= 0) {
                         clearInterval(timerInterval);
                         timerAttivo = false;
-                        bottone.textContent = "Avvia Timer";
+                        bottone.classList.remove("paused");
                         alert("Tempo scaduto!");
                     }
                 }, 1000);
