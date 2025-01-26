@@ -21,14 +21,14 @@
         h1 {
             font-size: 3.5em;
         }
-        h2#parola {
-            font-size:2.5em;
-        }
         #parola {
             /* font-size: 5em; /* Aumenta la dimensione del font */
             text-transform: uppercase; /* Converte il testo in maiuscolo */
             margin-bottom: 40px; /* Aggiunge un po' di spazio sotto la parola */
             /* font-weight: bold; /* Rende il testo in grassetto */
+        }
+        #timer {
+            font-size: 2.5em;
         }
         #controlli {
             display: inline-flex;
@@ -100,7 +100,7 @@
 <body>
     <h3>Intesa Perfetta</h3>
     <h1 id="parola"></h1>
-    <h2 id="timer">60</h2>
+    <div id="timer">60</div>
     <div id="controlli">
         <button id="avviaPausa" class="paused" onclick="avviaPausaTimer()"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
         <button onclick="resetTimer()"><i class="fas fa-undo"></i></button>
