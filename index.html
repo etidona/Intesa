@@ -180,6 +180,10 @@
             punteggio = 0;
             document.getElementById("punteggio").textContent = punteggio;
         }
+         document.addEventListener('DOMContentLoaded', function() {
+          const bottone = document.getElementById("avviaPausa");
+          bottone.classList.remove("paused");
+        });
     </script>
 </body>
 </html>
