@@ -109,6 +109,7 @@
         let timerInterval;
         let secondi = 60;
         let timerAttivo = false;
+        let punteggio = 0; // Variabile per il punteggio
 
         fetch('https://raw.githubusercontent.com/napolux/paroleitaliane/64e90297708a5de9c0ea1abfaf52e5d697bcc354/paroleitaliane/1000_parole_italiane_comuni.txt')
             .then(response => response.text())
@@ -155,8 +156,6 @@
                 }, 1000);
             }
         }
-
-        let punteggio = 0; // Variabile per il punteggio
 
         function incrementaPunteggio() {
             punteggio++;
