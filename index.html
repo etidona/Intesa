@@ -14,8 +14,18 @@
         }
         #contenitore {
             text-align: center;
+            width: 90%; /* Larghezza relativa per adattarsi agli schermi */
+            max-width: 600px; /* Larghezza massima per schermi grandi */
+            padding: 20px; /* Aggiunge un po' di spazio interno */
         }
-
+        @media (min-width: 768px) { /* Stili per schermi più grandi (es. tablet, desktop) */
+            #parola {
+                font-size: 4em; /* Ritorna a una dimensione fissa su schermi grandi */
+            }
+            #contenitore {
+                width: 500px;
+            }
+        }
         #parola {
             font-size: 4em; /* Aumenta la dimensione del font */
             text-transform: uppercase; /* Converte il testo in maiuscolo */
