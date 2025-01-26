@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intesa Perfetta</title>
+    <style>
+        body {
+            text-align: center; /* Centra il testo orizzontalmente */
+            font-family: sans-serif; /* Per una visualizzazione migliore */
+        }
+        #contenitore {
+            text-align: center;
+        }
+
+        #parola {
+            font-size: 4em; /* Aumenta la dimensione del font */
+            text-transform: uppercase; /* Converte il testo in maiuscolo */
+            margin-bottom: 50px; /* Aggiunge un po' di spazio sotto la parola */
+            font-weight: bold; /* Rende il testo in grassetto */
+        }
+
+        /* ... altri stili ... */
+    </style>
+</head>
+<body>
+    <h2>Intesa Perfetta</h2>
+    <h1 id="parola"></h1>
+    <h2 id="timer">60</h2>
+    <button id="avviaPausa" onclick="avviaPausaTimer()">Avvia/Pausa Timer</button>
+    <button onclick="resetTimer()">Reset Timer</button> 
+    <script>
+        let paroleItaliane = [];
+        let timerInterval;
+        let secondi = 60;
+        let timerAttivo = false;
+
+        fetch('https://raw.githubusercontent.com/napolux/paroleitaliane/64e90297708a5de9c0ea1abfaf52e5d697bcc354/paroleitaliane/1000_parole_italiane_comuni.txt')
+            .then(response => response.text())
+            .then(text => {
+                paroleItaliane = text.split('\n').filter(parola => parola.trim() !== '');
+                generaParola();
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento delle parole:', error);
+                document.getElementById("parola").textContent = "Errore nel caricamento delle parole";
+            });
+
+        function generaParola() {
+            if (paroleItaliane.length === 0) {
+                document.getElementById("parola").textContent = "Nessuna parola disponibile";
+                return;
+            }
+            const indiceCasuale = Math.floor(Math.random() * paroleItaliane.length);
+            document.getElementById("parola").textContent = paroleItaliane[indiceCasuale];
+        }
+
+        function avviaPausaTimer() {
+            const bottone = document.getElementById("avviaPausa");
+            if (timerAttivo) {
+                clearInterval(timerInterval);
+                timerAttivo = false;
+                bottone.textContent = "Riprendi Timer";
+            } else {
+                generaParola();
+                timerAttivo = true;
+                bottone.textContent = "Pausa Timer";
+                if (secondi === 60) {
+                    secondi = 60
+                }
+                timerInterval = setInterval(() => {
+                    secondi--;
+                    document.getElementById("timer").textContent = secondi;
+                    if (secondi <= 0) {
+                        clearInterval(timerInterval);
+                        timerAttivo = false;
+                        bottone.textContent = "Avvia Timer";
+                        alert("Tempo scaduto!");
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval); // Ferma il timer
+            secondi = 60; // Reimposta i secondi a 60
+            document.getElementById("timer").textContent = secondi; // Aggiorna la visualizzazione
+            timerAttivo = false; // Imposta lo stato del timer a non attivo
+            document.getElementById("avviaPausa").textContent = "Avvia Timer"; // Ripristina il testo del pulsante
+            generaParola(); // Genera una nuova parola
+        }
+    </script>
+</body>
+</html>
