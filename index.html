@@ -91,7 +91,7 @@
     <h2 id="timer">60</h2>
         <button id="avviaPausa" onclick="avviaPausaTimer()"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
         <button onclick="resetTimer()"><i class="fas fa-undo"></i></button>
-    <div id="punteggio-container"> <--- Contenitore per il punteggio
+    <div id="punteggio-container"> 
             <button onclick="decrementaPunteggio()"><i class="fas fa-minus"></i></button>
             <span id="punteggio">0</span>
             <button onclick="incrementaPunteggio()"><i class="fas fa-plus"></i></button>
@@ -148,12 +148,28 @@
             }
         }
 
+        let punteggio = 0; // Variabile per il punteggio
+
+        function incrementaPunteggio() {
+            punteggio++;
+            document.getElementById("punteggio").textContent = punteggio;
+        }
+
+        function decrementaPunteggio() {
+            if (punteggio > 0) { // Impedisce punteggi negativi
+                punteggio--;
+                document.getElementById("punteggio").textContent = punteggio;
+            }
+        }
+
         function resetTimer() {
             clearInterval(timerInterval); // Ferma il timer
             secondi = 60; // Reimposta i secondi a 60
             document.getElementById("timer").textContent = secondi; // Aggiorna la visualizzazione
             timerAttivo = false; // Imposta lo stato del timer a non attivo
             document.getElementById("avviaPausa").textContent = "Avvia Timer"; // Ripristina il testo del pulsante
+            punteggio = 0; // Resetta anche il punteggio
+            document.getElementById("punteggio").textContent = punteggio;
             generaParola(); // Genera una nuova parola
         }
     </script>
