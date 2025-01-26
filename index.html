@@ -28,13 +28,14 @@
         }
         /* ... altri stili ... */
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <h2>Intesa Perfetta</h2>
     <h1 id="parola"></h1>
     <h2 id="timer">60</h2>
-    <button id="avviaPausa" onclick="avviaPausaTimer()">Avvia/Pausa Timer</button>
-    <button onclick="resetTimer()">Reset Timer</button> 
+    <button id="avviaPausa" onclick="avviaPausaTimer()"><i class="fas fa-play"></i></button>
+    <button onclick="resetTimer()"><i class="fas fa-undo"></i></button> 
     <script>
         let paroleItaliane = [];
         let timerInterval;
