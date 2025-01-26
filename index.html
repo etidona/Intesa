@@ -174,12 +174,11 @@
             secondi = 60; // Reimposta i secondi a 60
             document.getElementById("timer").textContent = secondi; // Aggiorna la visualizzazione
             timerAttivo = false; // Imposta lo stato del timer a non attivo
-           const bottone = document.getElementById("avviaPausa"); // Ottieni il riferimento al bottone
+            const bottone = document.getElementById("avviaPausa"); // Ottieni il riferimento al bottone
             bottone.classList.remove("paused"); // Rimuovi la classe "paused" <--- CORREZIONE
             generaParola();
             punteggio = 0;
             document.getElementById("punteggio").textContent = punteggio;
-            generaParola(); // Genera una nuova parola
         }
     </script>
 </body>
