@@ -22,10 +22,37 @@
             margin-bottom: 50px; /* Aggiunge un po' di spazio sotto la parola */
             font-weight: bold; /* Rende il testo in grassetto */
         }
-        #button {
-            /* font-size: 1.8em; */
-            text-transform: uppercase; 
-        }
+        button {
+    font-size: 2em; /* Dimensione delle icone */
+    padding: 15px; /* Padding per dare spazio all'icona */
+    margin: 10px;
+    border-radius: 50%; /* Rende i bottoni circolari */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 60px; /* Larghezza fissa per i bottoni circolari */
+    height: 60px; /* Altezza fissa per i bottoni circolari */
+    display: inline-flex; /* Per centrare l'icona */
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Stile specifico per il pulsante play/pause per cambiare icona */
+#avviaPausa.paused i {
+    display: none; /* Nasconde l'icona "play" */
+}
+
+#avviaPausa.paused::before {
+    content: "\f04c"; /* Mostra l'icona "pause" (codice Unicode di Font Awesome) */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
         /* ... altri stili ... */
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
