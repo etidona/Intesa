@@ -70,6 +70,17 @@
         #avviaPausa.paused .fa-pause {
             opacity: 1;
         }
+        /* stili contatore */
+        #punteggio-container {
+            display: flex; /* Per allineare i pulsanti e il punteggio */
+            align-items: center; /* Per centrare verticalmente */
+            margin-bottom: 20px; /* Spazio sotto il contatore */
+        }
+
+        #punteggio {
+            font-size: 2em;
+            margin: 0 10px; /* Spazio tra il punteggio e i pulsanti */
+        }
         /* ... altri stili ... */
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -80,6 +91,11 @@
     <h2 id="timer">60</h2>
         <button id="avviaPausa" onclick="avviaPausaTimer()"><i class="fas fa-play"></i><i class="fas fa-pause"></i></button>
         <button onclick="resetTimer()"><i class="fas fa-undo"></i></button>
+    <div id="punteggio-container"> <--- Contenitore per il punteggio
+            <button onclick="decrementaPunteggio()"><i class="fas fa-minus"></i></button>
+            <span id="punteggio">0</span>
+            <button onclick="incrementaPunteggio()"><i class="fas fa-plus"></i></button>
+        </div>
     <script>
         let paroleItaliane = [];
         let timerInterval;
