@@ -25,36 +25,51 @@
             font-weight: bold; /* Rende il testo in grassetto */
         }
         button {
-    font-size: 2em; /* Dimensione delle icone */
-    padding: 15px; /* Padding per dare spazio all'icona */
-    margin: 10px;
-    border-radius: 50%; /* Rende i bottoni circolari */
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 60px; /* Larghezza fissa per i bottoni circolari */
-    height: 60px; /* Altezza fissa per i bottoni circolari */
-    display: inline-flex; /* Per centrare l'icona */
-    justify-content: center; /* Centra orizzontalmente */
-    align-items: center; /* Centra verticalmente */
-    transition: background-color 0.3s ease;
-}
+            font-size: 2em;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            position: relative; /* Necessario per il posizionamento assoluto delle icone */
+        }
 
-button:hover {
-    background-color: #45a049;
-}
+        button:hover {
+            background-color: #45a049;
+        }
 
-/* Stile specifico per il pulsante play/pause per cambiare icona */
-#avviaPausa.paused i {
-    display: none; /* Nasconde l'icona "play" */
-}
+        /* Stili per le icone play e pause */
+        #avviaPausa i {
+            position: absolute; /* Posiziona le icone una sopra l'altra */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centra perfettamente le icone */
+            transition: opacity 0.3s ease; /* Transizione per la comparsa/scomparsa */
+        }
 
-#avviaPausa.paused::before {
-    content: "\f04c"; /* Mostra l'icona "pause" (codice Unicode di Font Awesome) */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-}
+        #avviaPausa .fa-play { /* Icona di play */
+            opacity: 1; /* Mostra l'icona di play all'inizio */
+        }
+
+        #avviaPausa.paused .fa-play {
+            opacity: 0; /* Nasconde l'icona di play quando è in pausa */
+        }
+
+        #avviaPausa .fa-pause { /* Icona di pausa */
+            opacity: 0; /* Nasconde l'icona di pausa all'inizio */
+        }
+
+        #avviaPausa.paused .fa-pause {
+            opacity: 1; /* Mostra l'icona di pausa quando è in pausa */
+        }
         /* ... altri stili ... */
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
